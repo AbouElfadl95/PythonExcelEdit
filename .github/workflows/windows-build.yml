@@ -21,12 +21,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pyinstaller
+          pip install pandas xlrd>=2.0.1 openpyxl pyinstaller
+
+      - name: Test script before building
+        run: python ExpandPhoneNos.py
 
       - name: Build EXE with PyInstaller
         run: |
-          pyinstaller --onefile ExpandPhoneNos.py --hidden-import=pandas --hidden-import=xlrd --hidden-import=openpyxl
+          pyinstaller --onefile ExpandPhoneNos.py
 
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v4
