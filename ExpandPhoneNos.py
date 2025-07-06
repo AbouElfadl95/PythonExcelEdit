@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 import os
 import re
@@ -74,7 +75,10 @@ def get_newest_file(root_dir):
 # Apply final row expansion
 
 # Save to .xlsx
-input_file = input("Enter File Name: ")
+if len(sys.argv) > 1:
+    input_file = sys.argv[1]
+else:
+    input_file = input("Enter File Name: ")
 
 print(f"Processing file: {input_file}")
 df = pd.read_excel(input_file)

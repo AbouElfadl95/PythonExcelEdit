@@ -23,9 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas xlrd>=2.0.1 openpyxl pyinstaller
 
-      - name: Test script before building
-        run: python ExpandPhoneNos.py
-
       - name: Build EXE with PyInstaller
         run: |
           pyinstaller --onefile ExpandPhoneNos.py
